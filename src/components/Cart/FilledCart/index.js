@@ -21,12 +21,23 @@ const dispatch = useDispatch();
          dispatch(updateCartItemQuantity(payload));
 
     }
+    let filteredCartItems = [];
+    cart?.cartItems?.map((x)=>{
+        let index = filteredCartItems?.findIndex(z=>z.id === x.id);
+        if(index == -1){
+            filteredCartItems?.push(x)
+        }
+        else{
+            filteredCartItems[index] = {...x,quantity:filteredCartItems[index]?.quantity+1}
+        }
+    });
+    console.log("filteredCartItems=>",filteredCartItems,cart?.cartItems)
   return (
     <div>
         <div className="row container cart-main-div">
           <div className='col-8 p-4'> 
 
-             {cart.cartItems.map((eachItem,key)=>{
+             {filteredCartItems.map((eachItem,key)=>{
 
                  return(
  

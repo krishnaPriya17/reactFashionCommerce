@@ -16,8 +16,8 @@ const cartSlice = createSlice({
     addCartItem: (state,action)=> {
         let item_exists= state.cartItems.find(item=> item.id === action.payload.id);
       
-        if(!item_exists)
-        {
+        // if(!item_exists)
+        // {
 
        
         state.cartItems= [...state.cartItems,action.payload];
@@ -27,7 +27,7 @@ const cartSlice = createSlice({
        
         state.totalItems = ++state.totalItems;
        
-       }
+      //  }
     
     },
     deleteCartItem: (state,action)=> {
@@ -60,6 +60,8 @@ const cartSlice = createSlice({
           state.totalQuantity = ++state.totalQuantity;
        
           state.totalItemsPrice = state.totalItemsPrice + action.payload.item.price;
+          // state.totalItems = ++state.totalItems;
+          
         
         }
         else 
@@ -70,7 +72,7 @@ const cartSlice = createSlice({
              state.totalQuantity = --state.totalQuantity;
        
              state.totalItemsPrice = state.totalItemsPrice - action.payload.item.price;
-           
+            //  state.totalItems = --state.totalItems;
              
         }
         }
